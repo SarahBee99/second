@@ -1,5 +1,7 @@
 # Students
 
+![screenshot](./assets/screenshot.png)
+
 ## Fork and clone the repository
 
 Fork this repository on GitHub. This will create a copy on your GitHub account that you can edit.
