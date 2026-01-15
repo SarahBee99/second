@@ -1,0 +1,17 @@
+name: Validate JSON
+
+on:
+  pull_request:
+    paths:
+      - 'students.json' # Only run when this specific file changes
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        run: |
+          jq . students.json
