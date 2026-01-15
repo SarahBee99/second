@@ -6,11 +6,11 @@ on:
     branches:
       - main
     paths:
-      - 'data/students.json'  
+      - "data/students.json"
 
   pull_request:
     paths:
-      - 'data/students.json'
+      - "data/students.json"
 
 jobs:
   validate-json:
@@ -29,15 +29,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24.x'
-
+          node-version: "24.x"
+        
       - name: Install AJV Validator
         run: npm install -g ajv-cli ajv-formats
-
+        
       - name: Validate JSON against Schema
+        env:
+          SCHEMA_PATH: data/schema.json
+          DATA_PATH: data/students.json
         run: |
-          ajv validate -s data/schema.json -d data/students.json --errors=text --spec=draft2020
+          ajv validate -s "$SCHEMA_PATH" -d "$DATA_PATH" --errors=text --spec=draft2020
