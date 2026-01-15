@@ -30,8 +30,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Validate JSON schema
-        uses: docker://orrosenblatt/validate-json-action:latest
-        env:
-          INPUT_SCHEMA: 'data/schema.json'
-          INPUT_JSONS: 'data/students.json'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+
+      - name: Install AJV Validator
+        run: npm install -g ajv-cli ajv-formats
+
+      - name: Validate JSON against Schema
+        run: |
+          ajv validate -s data/schema.json -d data/students.json --errors=text --spec=draft2020
