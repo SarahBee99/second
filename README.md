@@ -47,4 +47,4 @@ git push origin main
 
 ## Create a pull request
 
-Create a pull request on GitHub to merge your changes to the upstream repository.
+Create a pull request on GitHub to merge your changes to the upstream repository. Learn more about [creating pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
